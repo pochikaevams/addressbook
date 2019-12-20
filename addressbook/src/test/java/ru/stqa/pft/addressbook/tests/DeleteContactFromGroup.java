@@ -49,7 +49,10 @@ public class DeleteContactFromGroup extends TestBase {
             }
         }
         app.goTo().mainPage();
-        app.group().select(groupId);
+        Groups groups = app.db().groups();
+        GroupData pickedGroup = groups.iterator().next();
+        app.group().filterGroup(pickedGroup);
+//        app.group().select(groupId);
         app.contact().selectContactById(selectedContact.getId());
         app.contact().submitDeleteContactFromGroup();
         Groups after = app.db().contactById(selectedContact.getId()).iterator().next().getGroups();

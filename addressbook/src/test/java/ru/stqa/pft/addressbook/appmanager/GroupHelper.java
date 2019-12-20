@@ -89,6 +89,10 @@ public class GroupHelper extends HelperBase {
        new Select(wd.findElement(By.name("to_group"))).selectByValue(Integer.toString(id));
     }
 
+    public void filterGroup(GroupData pickedGroup) {
+        new Select(wd.findElement(By.xpath("//select[@name='group']"))).selectByVisibleText(pickedGroup.getName());
+    }
+
     public Groups all() {
         if (groupCache != null) {
             return new Groups(groupCache);
